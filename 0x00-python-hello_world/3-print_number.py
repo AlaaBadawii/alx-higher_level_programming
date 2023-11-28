@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 number = 98
-print(f"{number} Battery street")
+# :d used to specify that the variable of type int
+print(f"{number:d} Battery street")

@@ -3,7 +3,7 @@ if __name__ == "__main__":
     import calculator_1
     import sys
 
-    strlen = len(sys.argv)
+    strlen = len(sys.argv) - 1
     if strlen < 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)

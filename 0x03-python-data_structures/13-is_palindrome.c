@@ -7,44 +7,41 @@
  */
 int is_palindrome(listint_t **head)
 {
-    listint_t *original_head = *head;
-    listint_t *runner = *head;
-    int len = 0, i;
-    int *str;
+	listint_t *original_head = *head;
+	listint_t *runner = *head;
+	int len, i;
+	int *str;
 
-    if (original_head == NULL)
-        return 1;
+	if (original_head == NULL)
+		return (1);
 
-    while (runner != NULL)
-    {
-        runner = runner->next;
-        len++;
-    }
+	len = 0;
+	while (runner != NULL)
+	{
+		runner = runner->next;
+		len++;
+	}
+	str = malloc(sizeof(int) * len / 2);
+	for (i = 0; i < len / 2; i++)
+	{
+		str[i] = original_head->n;
+		original_head = original_head->next;
+	}
+	if (len % 2 != 0)
+	{
+		original_head = original_head->next;
+		len--;
+	}
+	for (i = len / 2 - 1; i >= 0; i--)
+	{
+		if (original_head->n != str[i])
+		{
+			free(str);
+			return (0);
+		}
+		original_head = original_head->next;
+	}
+	free(str);
 
-    str = malloc(sizeof(int) * len / 2);
-
-    for (i = 0; i < len / 2; i++)
-    {
-        str[i] = original_head->n;
-        original_head = original_head->next;
-    }
-
-    if (len % 2 != 0)
-    {
-        original_head = original_head->next;
-        len--;
-    }
-
-    for (i = len / 2 - 1; i >= 0; i--)
-    {
-        if (original_head->n != str[i])
-        {
-            free(str);
-            return 0;
-        }
-        original_head = original_head->next;
-    }
-
-    free(str);
-    return 1;
+	return (1);
 }

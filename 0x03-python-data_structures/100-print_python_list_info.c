@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <python.h>
+#include <Python.h>
+
 /**
  * print_python_list_info - prints python list info
  *
@@ -8,11 +9,11 @@
  */
 void print_python_list_info(PyObject *p)
 {
-	ssize_t i, size;
-	pyListObject *list;
-	pyObject *item;
+	long int size, i;
+	PyListObject *list;
+	PyObject *item;
 
-	size = PyList_SIZE(p);
+	size = Py_SIZE(p);
 	printf("[*] Size of the Python List = %ld\n", size);
 
 	list = (PyListObject *)p;
@@ -24,4 +25,3 @@ void print_python_list_info(PyObject *p)
 		printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
 	}
 }
-

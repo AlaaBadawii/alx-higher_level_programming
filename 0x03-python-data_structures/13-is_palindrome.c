@@ -6,40 +6,40 @@
  */
 int is_palindrome(listint_t **head)
 {
-        listint_t *current, *temp;
-        int len, i, *str;
+	listint_t *current, *temp;
+	int len, i, *str;
 
-        current = *head;
-        temp = *head;
+	current = *head;
+	temp = *head;
 
-        if (*head == NULL)
-                return 1;
-        while (temp != NULL)
-        {
-                temp = temp->next;
-                len++;
-        }
-        str = malloc(sizeof(int) * len / 2);
-        for (i = 0; i < len / 2; i++)
-        {
-                str[i] = current->n;
-                current = current->next;
-        }
-        if (len % 2 != 0)
-        {
-                current = current->next;
-                len--;
-        }
-        for (i = len / 2 - 1; i >= 0; i--)
-        {
-                if (current->n != str[i])
-                {
-                        free(str);
-                        return (0);
-                }
-                current  = current->next;
-        }
-        free(str);
+	if (*head == NULL)
+		return (1);
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		len++;
+	}
+	str = malloc(sizeof(int) * len / 2);
+	for (i = 0; i < len / 2; i++)
+	{
+		str[i] = current->n;
+		current = current->next;
+	}
+	if (len % 2 != 0)
+	{
+		current = current->next;
+		len--;
+	}
+	for (i = len / 2 - 1; i >= 0; i--)
+	{
+		if (current->n != str[i])
+		{
+			free(str);
+			return (0);
+		}
+		current  = current->next;
+	}
+	free(str);
 
-        return (1);
+	return (1);
 }

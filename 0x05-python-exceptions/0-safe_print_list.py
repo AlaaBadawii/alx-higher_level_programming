@@ -5,7 +5,7 @@ def safe_print_list(my_list=None, x=0):
         try:
             print(my_list[i], end="")
             real_num += 1
-        except:
+        except IndexError:
             print()
             return real_num
     else:

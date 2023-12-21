@@ -4,5 +4,5 @@
 
 
 class Square:
-    """represent a Square"""
+    """Depresent a Square"""
     pass

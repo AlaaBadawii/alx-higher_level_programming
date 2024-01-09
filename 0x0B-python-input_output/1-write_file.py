@@ -3,7 +3,7 @@
 
 
 def write_file(filename="", text=""):
-    """writes a string to a text file (UTF8) 
+    """writes a string to a text file (UTF8)
     Args:
         filename (file): name of the file
         text (string): string to be written

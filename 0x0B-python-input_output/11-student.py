@@ -30,6 +30,7 @@ class Student:
             if type(value) in [bool, int, str, dict, list]:
                 r[key] = value
         return r
+
     def reload_from_json(self, json):
         """Replaces all attributs of Student instance from json"""
         for key in json:

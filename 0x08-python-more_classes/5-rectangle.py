@@ -60,6 +60,7 @@ class Rectangle:
         pic = "\n".join(["#" * self.__width for rows in range(self.__height)])
         return pic
     def __repr__(self):
+
         """ String representation to recreate new instance """
         return "Rectangle({:d}, {:d})".format(self.width, self.height)
 

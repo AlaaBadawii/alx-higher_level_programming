@@ -79,3 +79,10 @@ class Base:
                 return [cls.create(**d) for d in
                         cls.from_json_string(f.read())]
         return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Draw the rectangles and squares
+        """
+        t = turtle.Turtle()

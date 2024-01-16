@@ -1,88 +1,127 @@
 #!/usr/bin/python3
 """
-Base class for all models
+    Test Case for task base.py in models directory.
 """
-
+import unittest
+from models.base import Base
+from models.square import Square
 import json
-import os
 
 
-class Base:
+class TestBaseClass(unittest.TestCase):
     """
-    Base class for all models
+        Test class for the base class.
     """
-    __nb_objects = 0
 
-    def __init__(self, id=None):
+    def test_id_none(self):
         """
-        Initializes the class
+            initialise an instance of the base class with no id
         """
-        if id is not None:
-            self.id = id
-        else:
-            Base.__nb_objects += 1
-            self.id = Base.__nb_objects
+        b = Base()
+        self.assertEqual(1, b.id)
 
-    @staticmethod
-    def to_json_string(list_dictionaries):
+    def test_id(self):
         """
-        returns the JSON string representation of list_dictionaries
+            Initialise an instance with id > 0
         """
-        if list_dictionaries is None or len(list_dictionaries) == 0:
-            return "[]"
-        return json.dumps(list_dictionaries)
+        b = Base(12)
+        self.assertEqual(12, b.id)
 
-    @classmethod
-    def save_to_file(cls, list_objs):
+    def test_id_zero(self):
         """
-        writes the JSON string representation of list_objs to a file
+            Initialise instance with id == 0
         """
-        filename = cls.__name__ + ".json"
-        if list_objs is None or len(list_objs) == 0:
-            with open(filename, "w") as f:
-                f.write("[]")
-        else:
-            with open(filename, "w") as f:
-                f.write(cls.to_json_string(list(map(lambda x:
-                                                    x.to_dictionary(),
-                                                    list_objs))))
+        b = Base(0)
+        self.assertEqual(0, b.id)
 
-    @staticmethod
-    def from_json_string(json_string):
+    def test_id_negative(self):
         """
-        returns the list of the JSON string representation json_string
+            Initialise instance with id < 0
         """
-        if json_string is None or len(json_string) == 0:
-            return []
-        return json.loads(json_string)
+        b = Base(-2)
+        self.assertEqual(-2, b.id)
 
-    @classmethod
-    def create(cls, **dictionary):
+    def test_id_string(self):
         """
-        returns an instance with all attributes already set
+            Intialise instance with id is string
         """
-        if cls.__name__ == "Rectangle":
-            dummy = cls(1, 1)
-        elif cls.__name__ == "Square":
-            dummy = cls(1)
-        dummy.update(**dictionary)
-        return dummy
+        b = Base("Base")
+        self.assertEqual("Base", b.id)
 
-    @classmethod
-    def load_from_file(cls):
+    def test_id_list(self):
         """
-        returns a list of instances
+            Initialise instance with id is list
         """
-        filename = cls.__name__ + ".json"
-        if os.path.exists(filename):
-            with open(filename, "r") as f:
-                return [cls.create(**d) for d in
-                        cls.from_json_string(f.read())]
-        return []
+        b = Base([1, 3, 6])
+        self.assertEqual([1, 3, 6], b.id)
 
-    @staticmethod
-    def draw(list_rectangles, list_squares):
+    def test_id_tuple(self):
         """
-        Draw the rectangles and squares
+            Initialise instance with id is tuple
         """
-        t = turtle.Turtle()
+        b = Base((1, 3))
+        self.assertEqual((1, 3), b.id)
+
+    def test_id_dict(self):
+        """
+            Initialise instance with id is dict
+        """
+        b = Base({'id': 12})
+        self.assertEqual({'id': 12}, b.id)
+
+    def test_to_json_type(self):
+        """
+           test to_json type
+        """
+        sq = Square(9)
+        json_dict = sq.to_dictionary()
+        json_string = Base.to_json_string([json_dict])
+        self.assertEqual(type(json_string), str)
+
+    def test_to_json_value(self):
+        """
+             Test to json value (string)
+        """
+        sq = Square(1, 0, 0, 9)
+        json_dict = sq.to_dictionary()
+        json_string = Base.to_json_string([json_dict])
+        self.assertEqual(json.loads(json_string), [{"id": 9, "y": 0,
+                                                    "size": 1, "x": 0}])
+
+    def test_to_json_None(self):
+        """
+            test to json None
+        """
+        json_string = Base.to_json_string(None)
+        self.assertEqual(json_string, "[]")
+
+    def test_to_json_empty(self):
+        """
+            test to_json Empty
+        """
+        json_string = Base.to_json_string([])
+        self.assertEqual(json_string, "[]")
+
+    def test_from_json_string(self):
+        """
+            test from json_string
+        """
+        sq = Square(1, 0, 0, 234)
+        json_dict = sq.to_dictionary()
+        json_string = Base.to_json_string([json_dict])
+        json_list = Base.from_json_string(json_string)
+        self.assertEqual(json_list, [{'size': 1, 'x': 0, 'y': 0, 'id': 234}])
+
+    def test_from_json_none(self):
+        """
+            Test from json none
+        """
+        json_list = Base.from_json_string(None)
+        self.assertEqual(json_list, [])
+
+    def test_from_json_empty(self):
+        """
+            test from json none
+        """
+        json_list = Base.from_json_string([])
+        self.assertEqual(json_list, [])

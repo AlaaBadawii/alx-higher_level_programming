@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const { argv } = require('process');
 
-len = argv.length;
+const len = argv.length;
 
 if (len < 4) {
   console.log(0);

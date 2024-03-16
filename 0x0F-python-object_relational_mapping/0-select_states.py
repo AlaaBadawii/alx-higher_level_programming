@@ -8,22 +8,16 @@ import MySQLdb
 from sys import argv
 
 if __name__ == '__main__':
-    """Access the DB"""
-    user_name = argv[1]
-    password = argv[2]
-    db_name = argv[3]
+    """
+    Access to the database and get the states
+    from the database.
+    """
+    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
+                         passwd=argv[2], db=argv[3])
 
-    conn = MySQLdb.connect(
-        host='localhost',
-        user=user_name,
-        port=3306,
-        passwd=password,
-        database=db_name
-    )
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states")
+    rows = cur.fetchall()
 
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM states')
-    table = cursor.fetchall()
-
-    for row in table:
+    for row in rows:
         print(row)

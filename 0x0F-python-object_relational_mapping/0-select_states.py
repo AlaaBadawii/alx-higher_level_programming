@@ -22,7 +22,7 @@ if __name__ == '__main__':
     )
 
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM states ORDER BY id')
+    cursor.execute('SELECT * FROM states')
     table = cursor.fetchall()
 
     for row in table:

@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+script change the name of state
+"""
 
 from sys import argv
 from model_state import Base, State

@@ -5,3 +5,6 @@
 
 # 1. Base class
     first class Base
+
+# 2. First Rectangle
+    class Rectangle that inherits from Base

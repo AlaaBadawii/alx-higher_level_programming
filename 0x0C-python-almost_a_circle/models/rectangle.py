@@ -13,6 +13,17 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
+    
+    # stactic methods
+    @staticmethod
+    def isVaildInt(attr, obj):
+        """checks if an attribute is a vaild integer"""
+        if not isinstance(obj, int):
+            raise TypeError(f"{attr} must be an integer")
+        if attr in ["width", "height"] and obj <= 0:
+            raise ValueError(f"{attr} must be > 0")
+        if attr in ["x", "y"] and obj < 0:
+            raise ValueError(f"{attr} must be >= 0")
 
     # width
     @property
@@ -22,6 +33,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
+        self.isVaildInt("width", value)
         self.__width = value
 
     # height
@@ -32,6 +44,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
+        self.isVaildInt("height", value)
         self.__height = value
 
     # x
@@ -42,6 +55,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
+        self.isVaildInt("x", value)
         self.__x = value
 
     # y
@@ -52,4 +66,10 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
+        self.isVaildInt("y", value)
         self.__y = value
+
+    # instance methods
+    def area(self):
+        """returns the area value of the Rectangle."""
+        return self.height * self.width

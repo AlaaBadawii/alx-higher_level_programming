@@ -8,3 +8,6 @@
 
 # 2. First Rectangle
     class Rectangle that inherits from Base
+
+# 3. Validate attributes
+    Update the class Rectangle by adding validation of all setter methods and instantiation (id excluded):

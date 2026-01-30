@@ -38,5 +38,16 @@
 ## 9. Update \#1
     Update the class Rectangle by updating the public method def update(self, *args): by changing the prototype to update(self, *args, **kwargs) that assigns a key/value argument to attributes:
 
-10. And now, the Square!
+## 10. And now, the Square!
     the class Square that inherits from Rectangle
+
+## 11. Square size
+    Update the class Square by adding the public getter and setter size
+
+## 12. Square update
+    Update the class Square by adding the public method def update(self, *args, **kwargs) that assigns attributes:
+## 13. Rectangle instance to dictionary representation
+    Update the class Rectangle by adding the public method def to_dictionary(self): that returns the dictionary representation of a Rectangle
+
+## 14. Square instance to dictionary representation
+    Update the class Square by adding the public method def to_dictionary(self): that returns the dictionary representation of a Square

@@ -2,6 +2,7 @@
 """Test file for Base class"""
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class TestBase(unittest.TestCase):
@@ -13,6 +14,7 @@ class TestBase(unittest.TestCase):
     def setUp(self):
         Base._Base__nb_objects = 0
 
+    # id
     def test_without_id(self):
         """test automatic id assignment"""
         b1 = Base()
@@ -54,3 +56,13 @@ class TestBase(unittest.TestCase):
         """test id with tuple"""
         b = Base((1, 2))
         self.assertEqual(b.id, (1, 2))
+
+    # json
+    def test_to_json_dict(self):
+        """test converting to json dictinary"""
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        excepted = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]'
+
+        self.assertEqual(json_dictionary, excepted)

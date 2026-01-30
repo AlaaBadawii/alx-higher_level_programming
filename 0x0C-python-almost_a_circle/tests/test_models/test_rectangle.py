@@ -157,6 +157,7 @@ class Test_Rectangle(unittest.TestCase):
         r = Rectangle(1000, 2000)
         self.assertEqual(r.area(), 2000000)
 
+    # display
     def test_rectangle_dispaly(self):
         """test rectangle display without x and y"""
         r = Rectangle(3, 2)
@@ -179,12 +180,91 @@ class Test_Rectangle(unittest.TestCase):
 
         self.assertEqual(buffer.getvalue(), expected_output)
 
+    # __str__
     def test_str(self):
         """test __str__"""
         r1 = Rectangle(4, 6, 2, 1, 12)
         excpected = "[Rectangle] (12) 2/1 - 4/6"
 
         self.assertEqual(r1.__str__(), excpected)
+
+    # update
+    def test_rectangle_update_1_args(self):
+        """test update function. 1 argument"""
+        self.r.update(89)
+        self.assertEqual(self.r.id, 89)
+
+    def test_rectangle_update_2_args(self):
+        """test update function 2 arguments"""
+        self.r.update(89, 2)
+        self.assertEqual(self.r.id, 89)
+        self.assertEqual(self.r.width, 2)
+
+    def test_rectangle_update_3_args(self):
+        """test update function 3 arguments"""
+        self.r.update(89, 2, 3)
+        self.assertEqual(self.r.id, 89)
+        self.assertEqual(self.r.width, 2)
+        self.assertEqual(self.r.height, 3)
+
+    def test_rectangle_update_4_args(self):
+        """test update function 4 arguments"""
+        self.r.update(89, 2, 3, 4)
+        self.assertEqual(self.r.id, 89)
+        self.assertEqual(self.r.width, 2)
+        self.assertEqual(self.r.height, 3)
+        self.assertEqual(self.r.x, 4)
+
+    def test_rectangle_update_5_args(self):
+        """test update function 5 arguments"""
+        self.r.update(89, 2, 3, 4, 5)
+        self.assertEqual(self.r.id, 89)
+        self.assertEqual(self.r.width, 2)
+        self.assertEqual(self.r.height, 3)
+        self.assertEqual(self.r.x, 4)
+        self.assertEqual(self.r.y, 5)
+
+    def test_rectangle_update_1_kwargs(self):
+        """test update using kwargs 1 kwarg"""
+        self.r.update(id=1)
+        self.assertEqual(self.r.id, 1)
+
+    def test_rectangle_update_2_kwargs(self):
+        """test update using kwargs 2 kwarg"""
+        self.r.update(id=1, width=1)
+        self.assertEqual(self.r.id, 1)
+        self.assertEqual(self.r.width, 1)
+
+    def test_rectangle_update_3_kwargs(self):
+        """test update using kwargs 3 kwarg"""
+        self.r.update(id=1, width=1, height=1)
+        self.assertEqual(self.r.id, 1)
+        self.assertEqual(self.r.width, 1)
+        self.assertEqual(self.r.height, 1)
+
+    def test_rectangle_update_4_kwargs(self):
+        """test update using kwargs 4 kwarg"""
+        self.r.update(id=1, width=1, height=1, x=1)
+        self.assertEqual(self.r.id, 1)
+        self.assertEqual(self.r.width, 1)
+        self.assertEqual(self.r.height, 1)
+        self.assertEqual(self.r.x, 1)
+
+    def test_rectangle_update_5_kwargs(self):
+        """test update using kwargs 5 kwarg"""
+        self.r.update(id=1, width=1, height=1, x=1, y=1)
+        self.assertEqual(self.r.id, 1)
+        self.assertEqual(self.r.width, 1)
+        self.assertEqual(self.r.x, 1)
+        self.assertEqual(self.r.y, 1)
+
+    def test_rectangle_update_kwargs_no_order(self):
+        """test update using kwargs no need to be ordered"""
+        self.r.update(height=1, id=1, width=1, x=1, y=1)
+        self.assertEqual(self.r.id, 1)
+        self.assertEqual(self.r.width, 1)
+        self.assertEqual(self.r.x, 1)
+        self.assertEqual(self.r.y, 1)
 
 
 if __name__ == "__main__":

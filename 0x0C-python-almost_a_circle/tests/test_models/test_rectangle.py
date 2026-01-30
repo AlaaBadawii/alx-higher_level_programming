@@ -3,6 +3,9 @@
 from models.base import Base
 from models.rectangle import Rectangle
 import unittest
+# io and contextlib used to redirect the output
+import io
+from contextlib import redirect_stdout
 
 
 class Test_Rectangle(unittest.TestCase):
@@ -150,18 +153,20 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(r2.area(), 25)
         self.assertEqual(r3.area(), 28)
 
-    def test_rectangle_area_multiple(self):
-        r1 = Rectangle(2, 3)
-        r2 = Rectangle(5, 5)
-        r3 = Rectangle(7, 4)
-
-        self.assertEqual(r1.area(), 6)
-        self.assertEqual(r2.area(), 25)
-        self.assertEqual(r3.area(), 28)
-
     def test_rectangle_area_large(self):
         r = Rectangle(1000, 2000)
         self.assertEqual(r.area(), 2000000)
+
+    def test_rectangle_dispaly(self):
+        """test rectangle display"""
+        r = Rectangle(3, 2)
+        expected_output = "###\n###\n###\n"
+        buffer = io.StringIO()
+
+        with redirect_stdout(buffer):
+            r.display()
+
+        self.assertEqual(buffer.getvalue(), expected_output)
 
 
 if __name__ == "__main__":

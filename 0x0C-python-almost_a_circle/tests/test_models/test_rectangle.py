@@ -158,9 +158,20 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(r.area(), 2000000)
 
     def test_rectangle_dispaly(self):
-        """test rectangle display"""
+        """test rectangle display without x and y"""
         r = Rectangle(3, 2)
         expected_output = "###\n###\n"
+        buffer = io.StringIO()
+
+        with redirect_stdout(buffer):
+            r.display()
+
+        self.assertEqual(buffer.getvalue(), expected_output)
+
+    def test_rectangle_dispaly_with_x_y(self):
+        """test rectangle display with x and y"""
+        r = Rectangle(3, 2, 2, 2)
+        expected_output = "\n\n  ###\n  ###\n"
         buffer = io.StringIO()
 
         with redirect_stdout(buffer):

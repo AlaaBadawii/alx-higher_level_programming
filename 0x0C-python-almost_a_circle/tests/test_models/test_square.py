@@ -45,3 +45,64 @@ class Test_Square(unittest.TestCase):
         """test square size property"""
         self.assertEqual(self.sq.width, 5)
         self.assertEqual(self.sq.height, 5)
+    # update
+    def test_square_update_1_args(self):
+        """test update function. 1 argument"""
+        self.sq.update(89)
+        self.assertEqual(self.sq.id, 89)
+
+    def test_square_update_2_args(self):
+        """test update function 2 arguments"""
+        self.sq.update(89, 2)
+        self.assertEqual(self.sq.id, 89)
+        self.assertEqual(self.sq.size, 2)
+
+    def test_square_update_3_args(self):
+        """test update function 4 arguments"""
+        self.sq.update(89, 2, 3)
+        self.assertEqual(self.sq.id, 89)
+        self.assertEqual(self.sq.size, 2)
+        self.assertEqual(self.sq.x, 3)
+
+    def test_square_update_4_args(self):
+        """test update function 4 arguments"""
+        self.sq.update(89, 2, 3, 4)
+        self.assertEqual(self.sq.id, 89)
+        self.assertEqual(self.sq.size, 2)
+        self.assertEqual(self.sq.x, 3)
+        self.assertEqual(self.sq.y, 4)
+
+    def test_square_update_1_kwargs(self):
+        """test update using kwargs 1 kwarg"""
+        self.sq.update(id=1)
+        self.assertEqual(self.sq.id, 1)
+
+    def test_square_update_2_kwargs(self):
+        """test update using kwargs 2 kwarg"""
+        self.sq.update(id=1, size=1)
+        self.assertEqual(self.sq.id, 1)
+        self.assertEqual(self.sq.size, 1)
+
+    def test_square_update_3_kwargs(self):
+        """test update using kwargs 3 kwarg"""
+        self.sq.update(id=1, size=1, x=1)
+        self.assertEqual(self.sq.id, 1)
+        self.assertEqual(self.sq.size, 1)
+        self.assertEqual(self.sq.x, 1)
+        self.assertEqual(self.sq.y, 2)
+
+    def test_square_update_4_kwargs(self):
+        """test update using kwargs 4 kwarg"""
+        self.sq.update(id=1, size=1, x=1, y=1)
+        self.assertEqual(self.sq.id, 1)
+        self.assertEqual(self.sq.size, 1)
+        self.assertEqual(self.sq.x, 1)
+        self.assertEqual(self.sq.y, 1)
+
+    def test_square_update_kwargs_no_order(self):
+        """test update using kwargs no need to be ordered"""
+        self.sq.update(size=1, id=1, x=1, y=1)
+        self.assertEqual(self.sq.id, 1)
+        self.assertEqual(self.sq.size, 1)
+        self.assertEqual(self.sq.x, 1)
+        self.assertEqual(self.sq.y, 1)

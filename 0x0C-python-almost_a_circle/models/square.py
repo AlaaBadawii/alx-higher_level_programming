@@ -39,3 +39,4 @@ class Square(Rectangle):
             for k, v in kwargs.items():
                 if hasattr(self, k):
                     setattr(self, k, v)
+

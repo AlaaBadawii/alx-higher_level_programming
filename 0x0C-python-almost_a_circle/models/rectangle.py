@@ -77,5 +77,11 @@ class Rectangle(Base):
     def display(self):
         """prints in stdout the Rectangle instance
         with the character #"""
-        for i in range(self.height):
+        for _ in range(self.height):
             print('#' * self.width)
+
+    def __str__(self):
+        """overriding the __str__ method"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height
+        )

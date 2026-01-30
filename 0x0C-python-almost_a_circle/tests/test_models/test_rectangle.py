@@ -160,13 +160,20 @@ class Test_Rectangle(unittest.TestCase):
     def test_rectangle_dispaly(self):
         """test rectangle display"""
         r = Rectangle(3, 2)
-        expected_output = "###\n###\n###\n"
+        expected_output = "###\n###\n"
         buffer = io.StringIO()
 
         with redirect_stdout(buffer):
             r.display()
 
         self.assertEqual(buffer.getvalue(), expected_output)
+
+    def test_str(self):
+        """test __str__"""
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        excpected = "[Rectangle] (12) 2/1 - 4/6"
+
+        self.assertEqual(r1.__str__(), excpected)
 
 
 if __name__ == "__main__":

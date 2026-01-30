@@ -271,7 +271,3 @@ class Test_Rectangle(unittest.TestCase):
         excepted = {'id': 12, 'width': 10, 'height': 2, 'x': 0, 'y': 0}
         dictionary = self.r.to_dictionary()
         self.assertEqual(dictionary, excepted)
-
-
-if __name__ == "__main__":
-    unittest.main()

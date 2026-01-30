@@ -106,3 +106,9 @@ class Test_Square(unittest.TestCase):
         self.assertEqual(self.sq.size, 1)
         self.assertEqual(self.sq.x, 1)
         self.assertEqual(self.sq.y, 1)
+
+    # to_dict
+    def test_square_to_dict(self):
+        excepted = {'id': 10, 'size': 5, 'x': 1, 'y': 2}
+        dictionary = self.sq.to_dictionary()
+        self.assertEqual(dictionary, excepted)

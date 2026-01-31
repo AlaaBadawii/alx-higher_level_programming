@@ -51,3 +51,6 @@
 
 ## 14. Square instance to dictionary representation
     Update the class Square by adding the public method def to_dictionary(self): that returns the dictionary representation of a Square
+
+## 16. JSON string to file
+    Update the class Base by adding the class method def save_to_file(cls, list_objs): that writes the JSON string representation of list_objs to a file:

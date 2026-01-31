@@ -45,6 +45,7 @@ class Test_Square(unittest.TestCase):
         """test square size property"""
         self.assertEqual(self.sq.width, 5)
         self.assertEqual(self.sq.height, 5)
+
     # update
     def test_square_update_1_args(self):
         """test update function. 1 argument"""

@@ -1,6 +1,6 @@
 # 0x0C. Python - Almost a circle
 
-## Concepts Covered
+## Concepts Covered:
 
 This project is designed to review and apply core Python concepts, including:
 
@@ -21,6 +21,11 @@ It also covers more advanced topics such as:
 - Variable-length arguments (`*args` and `**kwargs`)
 - Serialization and deserialization
 - Working with JSON data
+
+## concepts to folders:
+- Unit testing (`tests/`)
+- Serialization (`models/`)
+
 
 ## COMMITTS GUIDELINES:
     UPD => update

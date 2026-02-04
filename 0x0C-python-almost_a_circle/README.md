@@ -1,88 +1,63 @@
-# 0x0C. Python - Almost a circle
+# Python OOP Project – Almost a Circle
 
-## Concepts Covered:
+## Overview
+This project demonstrates strong use of Object-Oriented Programming (OOP) principles in Python through the implementation of a small geometry system using base and derived classes. It emphasizes clean design, validation, testing, and serialization.
 
-This project is designed to review and apply core Python concepts, including:
+---
+
+## Concepts Covered
+
+This project applies core Python concepts including:
 
 - Importing modules
 - Exception handling
 - Object-Oriented Programming (OOP)
-  - Classes
+  - Classes and inheritance
   - Private attributes
   - Getters and setters
-  - Class methods
-  - Static methods
-  - Inheritance
+  - Class methods and static methods
 - Unit testing
 - File input/output (read/write)
 
-It also covers more advanced topics such as:
+It also includes more advanced topics such as:
 
-- Variable-length arguments (`*args` and `**kwargs`)
+- Variable-length arguments (`*args`, `**kwargs`)
 - Serialization and deserialization
 - Working with JSON data
 
-## concepts to folders:
-- Unit testing (`tests/`)
-- Serialization (`models/`)
+---
 
+## Project Structure
 
-## COMMITTS GUIDELINES:
-    UPD => update
-    ADD => add
-    DEL => delete
+- `models/` – Core classes and serialization logic
+- `tests/` – Unit tests for all functionalities
 
-## 0. If it's not tested it doesn't work
-    tests directory for all tests all testcases are within this file
+---
 
-## 1. Base class
-    first class Base
+## Key Features
 
-## 2. First Rectangle
-    class Rectangle that inherits from Base
+- A `Base` class that manages object IDs and JSON serialization
+- A `Rectangle` class with:
+  - Attribute validation
+  - Area calculation
+  - Custom string representation
+  - Display logic with positional offsets
+  - Dynamic attribute updates using `*args` and `**kwargs`
+- A `Square` class that inherits from `Rectangle`
+  - Size property with getter and setter
+  - Dictionary representation support
+- Full JSON file persistence and restoration
+- Comprehensive unit tests for reliability
 
-## 3. Validate attributes
-    Update the class Rectangle by adding validation of all setter methods and instantiation (id excluded):
+---
 
-## 4. Area first
-    build area method
+## Development Guidelines
 
-## 5. Display #0
-    Update the class Rectangle by adding the public method def display(self): that prints in stdout the Rectangle instance with the character #
+- All features are fully tested
+- Code follows Python best practices
+- Commit messages follow clear conventions:
+  - `ADD` – new features
+  - `UPD` – updates
+  - `DEL` – removals
 
-## 6. __str__
-    Update the class Rectangle by overriding the __str__ method so that it returns [Rectangle] (<id>) <x>/<y> - <width>/<height>
-
-## 7. Display #1
-    Update the class Rectangle by improving the public method def display(self): to print in stdout the Rectangle instance with the character # by taking care of x and y
-
-## 8. Update #0
-    Update the class Rectangle by adding the public method def update(self, *args): that assigns an argument to each attribute:
-
-        1st argument should be the id attribute
-        2nd argument should be the width attribute
-        3rd argument should be the height attribute
-        4th argument should be the x attribute
-        5th argument should be the y attribute
-
-    This type of argument is called a “no-keyword argument” - Argument order is super important.
-
-## 9. Update \#1
-    Update the class Rectangle by updating the public method def update(self, *args): by changing the prototype to update(self, *args, **kwargs) that assigns a key/value argument to attributes:
-
-## 10. And now, the Square!
-    the class Square that inherits from Rectangle
-
-## 11. Square size
-    Update the class Square by adding the public getter and setter size
-
-## 12. Square update
-    Update the class Square by adding the public method def update(self, *args, **kwargs) that assigns attributes:
-## 13. Rectangle instance to dictionary representation
-    Update the class Rectangle by adding the public method def to_dictionary(self): that returns the dictionary representation of a Rectangle
-
-## 14. Square instance to dictionary representation
-    Update the class Square by adding the public method def to_dictionary(self): that returns the dictionary representation of a Square
-
-## 16. JSON string to file
-    Update the class Base by adding the class method def save_to_file(cls, list_objs): that writes the JSON string representation of list_objs to a file:
+> If it’s not tested, it doesn’t work.

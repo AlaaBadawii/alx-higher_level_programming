@@ -1,5 +1,10 @@
 # 0x0C. Python - Almost a circle
 
+## COMMITTS GUIDELINES:
+    UPD => update
+    ADD => add
+    DEL => delete
+
 ## 0. If it's not tested it doesn't work
     tests directory for all tests all testcases are within this file
 

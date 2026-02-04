@@ -1,5 +1,27 @@
 # 0x0C. Python - Almost a circle
 
+## Concepts Covered
+
+This project is designed to review and apply core Python concepts, including:
+
+- Importing modules
+- Exception handling
+- Object-Oriented Programming (OOP)
+  - Classes
+  - Private attributes
+  - Getters and setters
+  - Class methods
+  - Static methods
+  - Inheritance
+- Unit testing
+- File input/output (read/write)
+
+It also covers more advanced topics such as:
+
+- Variable-length arguments (`*args` and `**kwargs`)
+- Serialization and deserialization
+- Working with JSON data
+
 ## COMMITTS GUIDELINES:
     UPD => update
     ADD => add
